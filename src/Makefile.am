@@ -611,6 +611,11 @@ mesos_containerizer_SOURCES = slave/containerizer/mesos/main.cpp
 mesos_containerizer_CPPFLAGS = $(MESOS_CPPFLAGS)
 mesos_containerizer_LDADD = libmesos.la
 
+pkglibexec_PROGRAMS += mesos-containerizer-standalone
+mesos_containerizer_standalone_SOURCES = launcher/mesos_containerizer_standalone.cpp
+mesos_containerizer_standalone_CPPFLAGS = $(MESOS_CPPFLAGS)
+mesos_containerizer_standalone_LDADD = libmesos.la
+
 if WITH_NETWORK_ISOLATOR
 pkglibexec_PROGRAMS += mesos-network-helper
 mesos_network_helper_SOURCES = slave/containerizer/isolators/network/helper.cpp

@@ -427,9 +427,9 @@ Try<string> prepare(
   }
 
   // Ensure we have root permissions.
-  if (geteuid() != 0) {
-    return Error("Using cgroups requires root permissions");
-  }
+  //if (geteuid() != 0) {
+  //  return Error("Using cgroups requires root permissions");
+  //}
 
   // Check if the hierarchy is already mounted, and if not, mount it.
   Try<bool> mounted = cgroups::mounted(hierarchy);
@@ -500,6 +500,7 @@ Try<string> prepare(
     }
   }
 
+  /*
   const string& testCgroup = path::join(cgroup, "test");
   // Create a nested test cgroup if it doesn't exist.
   exists = cgroups::exists(hierarchy, testCgroup);
@@ -524,6 +525,7 @@ Try<string> prepare(
   if (remove.isError()) {
     return Error("Failed to remove the nested test cgroup: " + remove.error());
   }
+  */
 
   return hierarchy;
 }
